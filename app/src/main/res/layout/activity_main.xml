@@ -20,8 +20,7 @@
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textIsSelectable="false"
-        android:textSize="39sp"
-        android:textStyle="bold" />
+        android:textSize="39sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,9 +48,8 @@
                 style="@style/ActionButton"
 
                 android:layout_width="105dp"
-                android:text="↺"
-                android:textColor="#FFBA2369"
-                android:textStyle="bold" />
+                android:text="Advanced"
+                android:textColor="#BC427A" />
 
             <TextView
                 android:id="@+id/division"
@@ -189,7 +187,7 @@
             <TextView
                 android:id="@+id/equalButton"
                 style="@style/ActionButton"
-                android:background="#D5FFFFFF"
+                android:background="#DFFFFFFF"
 
                 android:onClick="equalsClick"
                 android:text="="

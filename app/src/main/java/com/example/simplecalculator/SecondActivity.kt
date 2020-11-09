@@ -39,6 +39,10 @@ class SecondActivity: AppCompatActivity() {
         findViewById<TextView>(R.id.AC).setOnClickListener {
             MathOperation.text = ""
             ResultView.text = ""
+
+            if (MathOperation.text == "0") {
+                MathOperation.text = ""
+            }
         }
 
         findViewById<TextView>(R.id.Back).setOnClickListener {
@@ -64,8 +68,8 @@ class SecondActivity: AppCompatActivity() {
         }
     }
 
+
     fun setTextField(str: String) {
         MathOperation.append(str)
-
     }
 }

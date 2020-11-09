@@ -55,7 +55,7 @@
                 android:id="@+id/leftFrchxili"
                 style="@style/ActionButton"
                 android:text="("
-                android:textColor="#FFBA2369" />
+                android:textColor="#D84489" />
 
             <TextView
                 android:id="@+id/RightFrchxili"
@@ -183,7 +183,7 @@
             <TextView
                 android:id="@+id/equalButton"
                 style="@style/ActionButton"
-                android:background="#DDFFFFFF"
+                android:background="#DFFFFFFF"
                 android:text="="
                 android:textColor="#FFBA2369"
                 android:textStyle="bold" />
