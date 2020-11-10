@@ -18,7 +18,13 @@ class SecondActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        findViewById<TextView>(R.id.num0).setOnClickListener { setTextField("0") }
+        findViewById<TextView>(R.id.num0).setOnClickListener {
+            if (MathOperation.text.isNotEmpty()) {
+                setTextField("0")
+            } else if (MathOperation.text.contains("0")) {
+                MathOperation.text = ""
+            }
+        }
         findViewById<TextView>(R.id.num1).setOnClickListener { setTextField("1") }
         findViewById<TextView>(R.id.num2).setOnClickListener { setTextField("2") }
         findViewById<TextView>(R.id.num3).setOnClickListener { setTextField("3") }
@@ -28,7 +34,15 @@ class SecondActivity: AppCompatActivity() {
         findViewById<TextView>(R.id.num7).setOnClickListener { setTextField("7") }
         findViewById<TextView>(R.id.num8).setOnClickListener { setTextField("8") }
         findViewById<TextView>(R.id.num9).setOnClickListener { setTextField("9") }
-        findViewById<TextView>(R.id.dot).setOnClickListener { setTextField(".") }
+        findViewById<TextView>(R.id.dot).setOnClickListener {
+            if (MathOperation.text.isEmpty() && !MathOperation.text.contains(".")) {
+                setTextField("0.")
+            } else if (MathOperation.text.isNotEmpty() && !MathOperation.text.contains(".")){
+                setTextField(".")
+            } else if (MathOperation.text.isNotEmpty() && MathOperation.text.contains(".") && (MathOperation.text.contains("+") || MathOperation.text.contains("-") || MathOperation.text.contains("*") || MathOperation.text.contains("/"))) {
+                setTextField(".")
+            }
+        }
         findViewById<TextView>(R.id.gamokleba).setOnClickListener { setTextField("-") }
         findViewById<TextView>(R.id.sum).setOnClickListener { setTextField("+") }
         findViewById<TextView>(R.id.division).setOnClickListener { setTextField("/") }
@@ -39,10 +53,6 @@ class SecondActivity: AppCompatActivity() {
         findViewById<TextView>(R.id.AC).setOnClickListener {
             MathOperation.text = ""
             ResultView.text = ""
-
-            if (MathOperation.text == "0") {
-                MathOperation.text = ""
-            }
         }
 
         findViewById<TextView>(R.id.Back).setOnClickListener {
@@ -57,7 +67,6 @@ class SecondActivity: AppCompatActivity() {
             val express = ExpressionBuilder(MathOperation.text.toString()).build()
             val res = express.evaluate()
 
-
             val longResult = res.toLong()
             if (res == longResult.toDouble()) {
                 ResultView.text = longResult.toString()
@@ -65,9 +74,10 @@ class SecondActivity: AppCompatActivity() {
                 ResultView.text = res.toString()
 
             }
-        }
-    }
 
+        }
+
+    }
 
     fun setTextField(str: String) {
         MathOperation.append(str)

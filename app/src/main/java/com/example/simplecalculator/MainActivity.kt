@@ -153,12 +153,15 @@ class MainActivity : AppCompatActivity() {
 
         if (view is TextView) {
 
-            val number: String = view.text.toString()
-            var result: String = resultTextView.text.toString()
+            var number: String = view.text.toString()
+            val result: String = resultTextView.text.toString()
 
-            if (result == ".") {
-                result = ""
-            }
+            if(result.isEmpty() && !result.contains(".")) {
+                number = "0."
+            } else if (result.isNotEmpty() && !result.contains(".")) {
+                number = "."
+            } else if (result.isNotEmpty() && result.contains("."))
+                number = ""
 
             resultTextView.text = result + number
 
