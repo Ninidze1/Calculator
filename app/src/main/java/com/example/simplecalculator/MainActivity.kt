@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
     fun equalsClick(view: View) {
 
-        var secondOperandText: String = resultTextView.text.toString()
+        val secondOperandText: String = resultTextView.text.toString()
         var secondOperand: Double = 0.0
 
         if (secondOperandText.isNotEmpty()) {
@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
         if (operand % 1.0 != 0.0 && secondOperand % 1.0 != 0.0) {
 
             val number = resultTextView
-            val df = DecimalFormat("#.#############")
+            val df = DecimalFormat("#.###############")
             df.roundingMode = RoundingMode.CEILING
             resultTextView.text = df.format((operand / secondOperand))
 
@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         if (operand % 1.0 != 0.0 && secondOperand % 1.0 != 0.0) {
 
             val number = resultTextView
-            val df = DecimalFormat("#.#############")
+            val df = DecimalFormat("#.###############")
             df.roundingMode = RoundingMode.CEILING
             resultTextView.text = df.format((operand * secondOperand))
 

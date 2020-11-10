@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.example.simplecalculator.R
 import kotlinx.android.synthetic.main.activity_second.*
 import net.objecthunter.exp4j.ExpressionBuilder
-import java.lang.Exception
+import kotlin.Exception
 import kotlin.Result
 
 class SecondActivity: AppCompatActivity() {
@@ -19,10 +19,10 @@ class SecondActivity: AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         findViewById<TextView>(R.id.num0).setOnClickListener {
-            if (MathOperation.text.isNotEmpty()) {
+            if ((MathOperation.text == "0") && MathOperation.text.isEmpty()) {
+               setTextField("")
+            } else if ((MathOperation.text.isNotEmpty())) {
                 setTextField("0")
-            } else if (MathOperation.text.contains("0")) {
-                MathOperation.text = ""
             }
         }
         findViewById<TextView>(R.id.num1).setOnClickListener { setTextField("1") }
@@ -63,6 +63,23 @@ class SecondActivity: AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.equalButton).setOnClickListener {
+
+            try {
+
+                val express = ExpressionBuilder(MathOperation.text.toString()).build()
+                val res = express.evaluate()
+
+                val longResult = res.toLong()
+                if (res == longResult.toDouble()) {
+                    ResultView.text = longResult.toString()
+                } else {
+                    ResultView.text = res.toString()
+                }
+
+            } catch(e:Exception) {
+                Log.d("Error", "შეცდომა: ${e.message}")
+                ResultView.text = e.message
+            }
 
             val express = ExpressionBuilder(MathOperation.text.toString()).build()
             val res = express.evaluate()
